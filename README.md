@@ -71,8 +71,14 @@ curl -X POST http://localhost:8080/auction \
 ```bash
 curl http://localhost:8080/auction/{auction_id}
 ```
+- O leilão deverá estar com o status "0"
 
 3. Aguarde o tempo definido em AUCTION_DURATION para ver o leilão ser fechado automaticamente
+* Após o tempo de leilão, verifique o status do leilão:
+```bash
+curl http://localhost:8080/auction/{auction_id}
+```
+- O leilão deverá ser fechado com o status "1"
 
 4. Verificando os logs da aplicação:
 ```bash

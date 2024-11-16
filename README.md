@@ -35,7 +35,7 @@ AUCTION_INTERVAL=20s
 MONGO_INITDB_ROOT_USERNAME=admin
 MONGO_INITDB_ROOT_PASSWORD=admin
 MONGODB_URL=mongodb://admin:admin@mongodb:27017/auctions?authSource=admin
-MONGODB_DATABASE=auctions
+MONGODB_DB=auctions
 
 AUCTION_DURATION=30s        # Duração do leilão
 AUCTION_CHECK_INTERVAL=10s  # Intervalo de verificação

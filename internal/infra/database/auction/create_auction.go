@@ -114,7 +114,7 @@ func (ar *AuctionRepository) closeExpiredAuctions(ctx context.Context) {
 }
 
 func getAuctionDuration() time.Duration {
-	durationStr := os.Getenv("AUCTION_DURATION_MINUTES")
+	durationStr := os.Getenv("AUCTION_DURATION")
 	if durationStr == "" {
 		return 5 * time.Minute
 	}
@@ -129,7 +129,7 @@ func getAuctionDuration() time.Duration {
 }
 
 func getCheckInterval() time.Duration {
-	intervalStr := os.Getenv("AUCTION_INTERVAL")
+	intervalStr := os.Getenv("AUCTION_CHECK_INTERVAL")
 	if intervalStr == "" {
 		return 1 * time.Minute
 	}

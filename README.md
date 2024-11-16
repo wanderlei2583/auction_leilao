@@ -86,7 +86,7 @@ docker-compose logs -f app
 - `AUCTION_DURATION`: Define a duração do leilão (ex: 30s, 5m, 1h)
 - `AUCTION_CHECK_INTERVAL`: Define o intervalo de verificação para fechamento dos leilões
 - `MONGODB_URL`: URL de conexão com o MongoDB
-- `MONGODB_DATABASE`: Nome do banco de dados
+- `MONGODB_DB`: Nome do banco de dados
 
 ### Docker Compose
 

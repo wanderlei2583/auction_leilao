@@ -85,6 +85,45 @@ curl http://localhost:8080/auction/{auction_id}
 docker-compose logs -f app
 ```
 
+## 🧪Testes Automatizados
+1. Caso não esteja startado, inicie os serviços usando Docker Compose:
+```bash
+docker compose up -d
+```
+
+2. Execute o teste específico do fechamento automático de leilões:
+```bash
+go test -v ./internal/infra/database/auction -run TestAutomaticAuctionClosure
+```
+
+#### O que o Teste Verifica
+
+O teste `TestAutomaticAuctionClosure` valida o seguinte fluxo:
+1. Conexão com o MongoDB
+2. Criação de um leilão com status Active
+3. Configuração de um timestamp passado para simular um leilão expirado
+4. Verificação do fechamento automático do leilão após o período de expiração
+5. Confirmação da mudança de status de Active para Completed
+
+#### Configurações de Tempo
+O teste utiliza as seguintes configurações de ambiente que podem ser ajustadas:
+```env
+AUCTION_DURATION=1m        # Duração do leilão
+AUCTION_CHECK_INTERVAL=10s # Intervalo de verificação
+```
+
+#### Resultados Esperados
+Um teste bem-sucedido mostrará logs indicando:
+- Conexão bem-sucedida com o MongoDB
+- Criação do leilão
+- Status inicial do leilão
+- Status final do leilão (deve ser Completed)
+
+##### Exeplo de Resultados
+![Teste fechamento automático de leilão](imagens/img_test.jpg)
+
+Em caso de falha, o teste fornecerá informações detalhadas sobre qual etapa falhou e por quê.
+
 ## ⚙️ Configurações Importantes
 
 ### Variáveis de Ambiente

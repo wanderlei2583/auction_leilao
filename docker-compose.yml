@@ -10,14 +10,20 @@ services:
     command: sh -c "/auction"
     networks:
       - localNetwork
+    depends_on:
+      - mongodb
 
   mongodb:
     image: mongo:latest
-    container_name: mongodb
+    container_name: mongodb_container
     ports:
       - "27017:27017"
     env_file:
       - cmd/auction/.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: auction
     volumes:
       - mongo-data:/data/db
     networks:

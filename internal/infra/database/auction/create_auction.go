@@ -61,7 +61,7 @@ func (ar *AuctionRepository) CreateAuction(
 	if err != nil {
 		logger.Error("Error trying to insert auction", err)
 		return internal_error.NewInternalServerError(
-			"Error trying to insert auction",
+			fmt.Sprintf("Error trying to insert auction: %v", err),
 		)
 	}
 
